@@ -13,10 +13,13 @@ This project is a continuation of an EDA analysis of League of Legends professio
 
 The data cleaning process involved selecting relevant columns and handling missing values. We pick the team rows out of the whole dataset since we are predicting win rate of teams in matches. For both models, we are using accuracy as the performancec metric.
 
+P.S.: Since we want to figure out the importance of firstbaron in predicting match results, our time of prediction is "right after the first baron" and we delete the matches that do not have firstbaron data. 
+
 The key columns after cleaning are as follows:
 
 - `playoffs`: Indicates if a team made to the playoffs.
 - `league`: The tier and region the game was played in.
+- `position`: if the row is a team or player (if so, the player's position)
 - `side`: The side of the map the team played on: Blue or Red.
 - `result`: Whether the team won. 
 - `kills`, `deaths`, `assists`: Total kills, deaths, and assists of a team when the game ends.
@@ -27,7 +30,13 @@ The key columns after cleaning are as follows:
 
 Here's the header of the cleaned dataset:
 
-
+|   playoffs | league   | side   | position   |   result |   kills |   deaths |   assists |   damagetochampions |   earnedgold |   golddiffat10 |   xpdiffat10 |   csdiffat10 |   killsat10 |   deathsat10 |   assistsat10 |   firstblood |   firstdragon |   firstherald |   firstbaron |   firsttower |   turretplates |
+|-----------:|:---------|:-------|:-----------|---------:|--------:|---------:|----------:|--------------------:|-------------:|---------------:|-------------:|-------------:|------------:|-------------:|--------------:|-------------:|--------------:|--------------:|-------------:|-------------:|---------------:|
+|          0 | LCKC     | Blue   | team       |        0 |       9 |       19 |        19 |               56560 |        28222 |           1523 |          137 |           -8 |           3 |            0 |             5 |            1 |             0 |             1 |            0 |            1 |              5 |
+|          0 | LCKC     | Red    | team       |        1 |      19 |        9 |        62 |               79912 |        33769 |          -1523 |         -137 |            8 |           0 |            3 |             0 |            0 |             1 |             0 |            0 |            0 |              0 |
+|          0 | LCKC     | Blue   | team       |        0 |       3 |       16 |         7 |               59579 |        34688 |          -1619 |        -1586 |          -27 |           1 |            3 |             1 |            0 |             0 |             1 |            0 |            0 |              2 |
+|          0 | LCKC     | Red    | team       |        1 |      16 |        3 |        39 |               74855 |        48063 |           1619 |         1586 |           27 |           3 |            1 |             3 |            1 |             1 |             0 |            1 |            1 |              3 |
+|          0 | LCKC     | Blue   | team       |        1 |      14 |        5 |        42 |               67376 |        41372 |           -103 |          813 |           13 |           0 |            1 |             0 |            0 |             1 |             0 |            1 |            1 |              1 |
 
 ---
 
@@ -45,6 +54,7 @@ The baseline model performances are as follows:
 
 Here's the list of feature performances for the Baseline model:
 
+<iframe src="assets/basemodel_feature_importance.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
 
@@ -92,11 +102,13 @@ The final model performances are as follows:
 
 In the final model, we added one more quantitative variable and four ordinal variables. Here's the list of feature performances for the Baseline model:
 
-
+<iframe src="assets/finalmodel_feature_importance.html" width=800 height=600 frameBorder=0></iframe>
 
 ### Confusion Matrix
 
 Here is a display of the confusion matrix of the final model:
+
+<iframe src="assets/finalmodel_confusion_matrix.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
 

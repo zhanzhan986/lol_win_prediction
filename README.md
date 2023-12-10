@@ -128,7 +128,7 @@ We performed a fairness analysis to determine if the model's predictions were bi
 - Null Hypothesis: The model's accuracy is the same for both Blue and Red sides.
 - Alternative Hypothesis: The model's accuracy differs between the Blue and Red sides.
 
-After conducting 1000 permutations, we get a P-Value of 0.975. Therefore, we reject the null hypothesis at 5% significance level, indicating fairness in the model's performance regardless of the team's side. 
+After conducting 1000 permutations, we get a P-Value of 0.18. Therefore, we reject the null hypothesis at 5% significance level, indicating fairness in the model's performance regardless of the team's side. 
 
 
 ---

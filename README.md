@@ -56,6 +56,8 @@ Here's the list of feature performances for the Baseline model:
 
 <iframe src="assets/basemodel_feature_importance.html" width=800 height=600 frameBorder=0></iframe>
 
+We can see that gold difference is the most important one among the three.
+
 ---
 
 ## Final Model
@@ -84,7 +86,9 @@ Regarding hyperparameter tuning, we aim to identify the optimal number of estima
 The logic behind this is:
 
 n_estimators: Adjusting this parameter helps find the ideal number of trees for the forest, balancing between having too few, which might not capture sufficient information, and too many, which could potentially lead to overfitting.
+
 criterion: This is a gauge of our model's error. We are evaluating between entropy and gini impurity, which differ in their criteria for splitting nodes.
+
 max_depth: This controls the maximum depth of each tree. Deeper trees might overfit on training data and not perform well with new data, while shallower trees might not gather enough relevant information.
 
 Using sklearn's GridSearchCV, we are able to find out the best parameters:
@@ -98,11 +102,15 @@ The final model performances are as follows:
 - Training Accuracy: 0.8693745361311652
 - Testing Accuracy: 0.8364552180072407
 
+Our refined model behaves much better with testing accuracy enhanced from 0.66 to 0.84.
+
 ### Feature Importances
 
 In the final model, we added one more quantitative variable and four ordinal variables. Here's the list of feature performances for the Baseline model:
 
 <iframe src="assets/finalmodel_feature_importance.html" width=800 height=600 frameBorder=0></iframe>
+
+We can see that firstbaron is very important in this high-accuracy model, which confirms our hypothesis that the first baron is very important to predict match results.
 
 ### Confusion Matrix
 
